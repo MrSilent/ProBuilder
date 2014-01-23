@@ -136,7 +136,7 @@ Builder.load_string("""
                     spacing: 5
                     TextInput:
                         id: hst1
-                        text: 'michaelfogleman.com'
+                        text: '127.0.0.1'
                         multiline: False
                         size_hint: 1, .4
                     TextInput:
@@ -282,7 +282,7 @@ Builder.load_string("""
                     spacing: 5
                     TextInput:
                         id: hst2
-                        text: 'michaelfogleman.com'
+                        text: '127.0.0.1'
                         multiline: False
                         size_hint: 1, .4
                     TextInput:

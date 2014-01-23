@@ -7,8 +7,8 @@ from kivy.uix.tabbedpanel import TabbedPanel
 from kivy.uix.floatlayout import FloatLayout
 from kivy.lang import Builder
 
-USERNAME = 'xmrsilentx'
-IDENTITY_TOKEN ='c3d63b61bb424d7fa62de0cb9523ec6f'
+USERNAME = ''
+IDENTITY_TOKEN =''
     
 
 Builder.load_string("""

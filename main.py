@@ -67,7 +67,7 @@ Builder.load_string("""
                     text: 'End/X2'
                     size_hint_x: .4
                 TextInput:
-                    id: tix4
+                    id: tix2
                     size_hint_x: .4
                     multiline: False
                     text: str(sx2.value)
@@ -1218,7 +1218,7 @@ Builder.load_string("""
                 Switch:
                     id: fill5
                 TextInput:
-                    id: hst1
+                    id: hst5
                     text: '127.0.0.1'
                     multiline: False
                 TextInput:

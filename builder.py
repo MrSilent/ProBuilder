@@ -166,7 +166,7 @@ def ibuilder_x(x1, x2, xi, y1, yi, z1, z2, fill=False):
     x1, x2 = sorted((x1, x2))
     z1, z2 = sorted((z1, z2))
     result = set()
-    for x in range(x1, x2):
+    for x in range(x2):
         result |= cuboid(x1, x1 + xi, y1, y1, z1, z2, fill)
         x1 += xi
         y1 += yi
@@ -176,7 +176,7 @@ def ibuilder_z(x1, x2, y1, yi, z1, z2, zi, fill=False):
     x1, x2 = sorted((x1, x2))
     z1, z2 = sorted((z1, z2))
     result = set()
-    for z in range(z1, z2):
+    for z in range(z2):
         result |= cuboid(x1, x2, y1, y1, z1, z1 + zi, fill)
         z1 += zi
         y1 += yi

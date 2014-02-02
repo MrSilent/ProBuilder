@@ -4,7 +4,7 @@ ProBuilder
 Builder GUI plug-in for Craft
 
     This project is a plug-in program for the PC game 'Craft'. For more information about the
-    game itself, please refer to: http://www.michaelfogleman.com/craft/
+    game itself, please refer to: [Craft](http://www.michaelfogleman.com/craft/)
 
 Code Details:
     
@@ -41,9 +41,9 @@ Instructions:
     Windows: Right click the main.py file and choose 'open with' option. Browse to where
       you unpacked the kivy folder and select the kivy.bat file. Done
 	1) First study the builder and main scripts carefully to get an understanding of what
-            each input corresponds to.(Many functions do not require every available input, i.e. 'Sphere'
-            only needs Centers, 'X', 'Y', 'Z', and 'Radius'.) Starting and center inputs are marked
-            'Ctr/ X, Y, and Z'. End point inputs are marked 'End/ X, Y, and Z'.
+            each input corresponds to.(Many functions do not require every available input, i.e.
+            'Sphere' only needs Centers, 'X', 'Y', 'Z', and 'Radius'.) Starting and center inputs
+            are marked 'Ctr/ X, Y, and Z'. End point inputs are marked 'End/ X, Y, and Z'.
 
 	2) Study the map and select a good spot with enough space to handle the size of your object.
 

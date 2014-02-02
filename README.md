@@ -8,12 +8,16 @@ Builder GUI plug-in for Craft
 
 Code Details:
     
-    This program is written mainly in Kivy/kv language though Python/Pygame do most of the heavy lifting.
+    This program is written mainly in Kivy/kv language though Python/Pygame do most of the work.
+    
+![](https://raw.github.com/MrSilent/ProBuilder/master/screenshot_2.png)
 
 Requirements:
     
 	-Python v2.7.2
 	-Kivy v1.7.2
+	
+![](https://raw.github.com/MrSilent/ProBuilder/master/screenshot_1.png)
 
 Features:
     
@@ -47,14 +51,14 @@ Instructions:
 
 	4) Set all text inputs to equal your target coordinates.
 
-	5) Objects are set to 'Hollow' by default, to change this, simply check the box next to the 'Port' input
-            so the label reads 'Filled'.
+	5) Objects are set to 'Hollow' by default, to change this, simply check the box next to the 'Port'
+	    input so the label reads 'Filled'.
 
-	6) Triple-quadruple check your settings, hit the 'Build It!' button, then sit back and watch it build.
+	6) Triple-quadruple check your settings, hit the 'Build It!' button, sit back and watch it build.
 
-	Tip) You can always set the ranges for 'X' and 'Y' for your needs. For example: Say you have a cube from
-            30 to -30 X, 12 to 45 Y, and 30 to -30 Z. To prevent damage to the walls of your structure, simply set
-            the X and Z ranges to 29, -29 in order to prevent building outside the walls.
+	Tip) You can always set the ranges for 'X' and 'Y' for your needs. For example: Say you have a
+	    cube from 30 to -30 X, 12 to 45 Y, and 30 to -30 Z. To prevent damage to the walls of your
+	    structure, set the X and Z ranges to 29, -29 in order to prevent building outside the walls.
 
 		Happy building!
 			Kris Wolf

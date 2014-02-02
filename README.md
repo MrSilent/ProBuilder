@@ -3,8 +3,9 @@ ProBuilder
 
 Builder GUI plug-in for Craft
 
-    This project is a plug-in program for the PC game 'Craft'. For more information about the
-    game itself, please refer to: [Craft](http://www.michaelfogleman.com/craft/)
+   This project is a plug-in program for the PC game 'Craft'. For more information about the
+   game itself, please refer to:
+   [Craft](http://www.michaelfogleman.com/craft/)
 
 Code Details:
     

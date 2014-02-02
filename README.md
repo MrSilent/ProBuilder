@@ -3,6 +3,8 @@ ProBuilder
 
 Builder GUI for Craft
 	This project is a plug-in program for the PC game 'Craft'. For more information about the game itself, please refer to: http://www.michaelfogleman.com/craft/
+
+![](https://github.com/MrSilent/ProBuilder/blob/master/screenshot.png?raw=true)
 	
 Details:
 	This program is written mainly in Kivy or 'kv' language though Python/Pygame do most of the heavy lifting.

@@ -9,8 +9,8 @@ from kivy.uix.tabbedpanel import TabbedPanel
 from kivy.uix.floatlayout import FloatLayout
 from kivy.lang import Builder
 
-USERNAME = ''
-IDENTITY_TOKEN =''
+USERNAME = 'xmrsilentx'
+IDENTITY_TOKEN = 'c3d63b61bb424d7fa62de0cb9523ec6f'
 
 block_list = ['Empty', 'Grass', 'Sand', 'Stone', 'Brick', 'Wood', 'Cement',
               'Dirt', 'Plank', 'Snow', 'Glass', 'Cobble', 'Light Stone',
@@ -32,17 +32,19 @@ Builder.load_string("""
             padding: 5
             spacing: 5
             GridLayout:
-                cols: 4
+                cols: 5
                 spacing: 2
+                size_hint_y: .1
                 Label:
                     text: 'Ctr/X1'
-                    size_hint_x: .4
+                    size_hint_x: .2
                 TextInput:
                     id: tix1
                     multiline: False
-                    size_hint_x: .4
-                    text: str(sx1.value)
+                    size_hint_x: .2
+                    text: str(int(sx1.value))
                     on_text: root.int_set(self, sx1)
+                    on_text_validate: root.goto_next(tix2)
                 GridLayout:
                     cols: 2
                     size_hint_x: .1
@@ -54,6 +56,19 @@ Builder.load_string("""
                         text:'>'
                         size_hint_x: .1
                         on_press: root.pls(sx1)
+                GridLayout:
+                    cols: 2
+                    size_hint_x: .3
+                    TextInput:
+                        id: sxmin
+                        size_hint_x: .3
+                        text: str(sx1.min)
+                        on_text: root.min(self, sx1)
+                    TextInput:
+                        id: sxmax
+                        size_hint_x: .3
+                        text: str(sx1.max)
+                        on_text: root.max(self, sx1)
                 Slider:
                     id: sx1
                     min: -5000
@@ -61,17 +76,19 @@ Builder.load_string("""
                     step: 1
                     value: 0
             GridLayout:
-                cols: 4
+                cols: 5
                 spacing: 2
+                size_hint_y: .1
                 Label:
                     text: 'End/X2'
-                    size_hint_x: .4
+                    size_hint_x: .2
                 TextInput:
                     id: tix2
-                    size_hint_x: .4
+                    size_hint_x: .2
                     multiline: False
-                    text: str(sx2.value)
+                    text: str(int(sx2.value))
                     on_text: root.int_set(self, sx2)
+                    on_text_validate: root.goto_next(tiy1)
                 GridLayout:
                     cols: 2
                     size_hint_x: .1
@@ -83,6 +100,19 @@ Builder.load_string("""
                         text: '>'
                         size_hint_x: .1
                         on_press: root.pls(sx2)
+                GridLayout:
+                    cols: 2
+                    size_hint_x: .3
+                    TextInput:
+                        id: sx2min
+                        size_hint_x: .3
+                        text: str(sx2.min)
+                        on_text: root.min(self, sx2)
+                    TextInput:
+                        id: sx2max
+                        size_hint_x: .3
+                        text: str(sx2.max)
+                        on_text: root.max(self, sx2)
                 Slider:
                     id: sx2
                     min: -5000
@@ -90,17 +120,19 @@ Builder.load_string("""
                     step: 1
                     value: 0
             GridLayout:
-                cols: 4
+                cols: 5
                 spacing: 2
+                size_hint_y: .1
                 Label:
                     text: 'Ctr/Y1'
-                    size_hint_x: .4
+                    size_hint_x: .2
                 TextInput:
                     id: tiy1
-                    size_hint_x: .4
+                    size_hint_x: .2
                     multiline: False
-                    text: str(sy1.value)
+                    text: str(int(sy1.value))
                     on_text: root.int_set(self, sy1)
+                    on_text_validate: root.goto_next(tiy2)
                 GridLayout:
                     cols: 2
                     size_hint_x: .1
@@ -112,6 +144,17 @@ Builder.load_string("""
                         text: '>'
                         size_hint_x: .1
                         on_press: root.pls(sy1)
+                GridLayout:
+                    cols: 2
+                    size_hint_x: .3
+                    Label:
+                        text: ''
+                    Label:
+                        text: ''
+                    Label:
+                        text: '    Min     '
+                    Label:
+                        text: '  Max    '
                 Slider:
                     id: sy1
                     min: 0
@@ -119,17 +162,19 @@ Builder.load_string("""
                     step: 1
                     value: 12
             GridLayout:
-                cols: 4
+                cols: 5
                 spacing: 2
+                size_hint_y: .1
                 Label:
                     text: 'End/Y2'
-                    size_hint_x: .4
+                    size_hint_x: .2
                 TextInput:
                     id: tiy2
-                    size_hint_x: .4
+                    size_hint_x: .2
                     multiline: False
-                    text: str(sy2.value)
+                    text: str(int(sy2.value))
                     on_text: root.int_set(self, sy2)
+                    on_text_validate: root.goto_next(tiz1)
                 GridLayout:
                     cols: 2
                     size_hint_x: .1
@@ -141,6 +186,17 @@ Builder.load_string("""
                         text: '>'
                         size_hint_x: .1
                         on_press: root.pls(sy2)
+                GridLayout:
+                    cols: 2
+                    size_hint_x: .3 
+                    Label:
+                        text: ' Column  '
+                    Label:
+                        text: 'Column  '
+                    Label:
+                        text: ''
+                    Label:
+                        text: ''
                 Slider:
                     id: sy2
                     min: 0
@@ -148,17 +204,19 @@ Builder.load_string("""
                     step: 1
                     value: 12
             GridLayout:
-                cols: 4
+                cols: 5
                 spacing: 2
+                size_hint_y: .1
                 Label:
                     text: 'Ctr/Z1'
-                    size_hint_x: .4
+                    size_hint_x: .2
                 TextInput:
                     id: tiz1
-                    size_hint_x: .4
+                    size_hint_x: .2
                     multiline: False
-                    text: str(sz1.value)
+                    text: str(int(sz1.value))
                     on_text: root.int_set(self, sz1)
+                    on_text_validate: root.goto_next(tiz2)
                 GridLayout:
                     cols: 2
                     size_hint_x: .1
@@ -170,6 +228,19 @@ Builder.load_string("""
                         text: '>'
                         size_hint_x: .1
                         on_press: root. pls(sz1)
+                GridLayout:
+                    cols: 2
+                    size_hint_x: .3
+                    TextInput:
+                        id: sz1min
+                        size_hint_x: .3
+                        text: str(sz1.min)
+                        on_text: root.min(self, sz1)
+                    TextInput:
+                        id: sz1max
+                        size_hint_x: .3
+                        text: str(sz1.max)
+                        on_text: root.max(self, sz1)
                 Slider:
                     id: sz1
                     min: -5000
@@ -177,17 +248,19 @@ Builder.load_string("""
                     step: 1
                     value: 0
             GridLayout:
-                cols: 4
+                cols: 5
                 spacing: 2
+                size_hint_y: .1
                 Label:
                     text: 'End/Z2'
-                    size_hint_x: .4
+                    size_hint_x: .2
                 TextInput:
                     id: tiz2
-                    size_hint_x: .4
+                    size_hint_x: .2
                     multiline: False
-                    text: str(sz2.value)
+                    text: str(int(sz2.value))
                     on_text: root.int_set(self, sz2)
+                    on_text_validate: root.goto_next(tirad)
                 GridLayout:
                     cols: 2
                     size_hint_x: .1
@@ -199,6 +272,19 @@ Builder.load_string("""
                         text: '>'
                         size_hint_x: .1
                         on_press: root.pls(sz2)
+                GridLayout:
+                    cols: 2
+                    size_hint_x: .3
+                    TextInput:
+                        id: sz2min
+                        size_hint_x: .3
+                        text: str(sz2.min)
+                        on_text: root.min(self, sz2)
+                    TextInput:
+                        id: sz2max
+                        size_hint_x: .3
+                        text: str(sz2.max)
+                        on_text: root.max(self, sz2)
                 Slider:
                     id: sz2
                     min: -5000
@@ -206,17 +292,19 @@ Builder.load_string("""
                     step: 1
                     value: 0
             GridLayout:
-                cols: 4
+                cols: 5
                 spacing: 2
+                size_hint_y: .1
                 Label:
                     text: 'Radius'
-                    size_hint_x: .4
+                    size_hint_x: .2
                 TextInput:
                     id: tirad
-                    size_hint_x: .4
+                    size_hint_x: .2
                     multiline: False
-                    text: str(srad.value)
+                    text: str(int(srad.value))
                     on_text: root.int_set(self, srad)
+                    on_text_validate: root.goto_next(hst1)
                 GridLayout:
                     cols: 2
                     size_hint_x: .1
@@ -228,6 +316,11 @@ Builder.load_string("""
                         text: '>'
                         size_hint_x: .1
                         on_press: root.pls(srad)
+                GridLayout:
+                    cols: 1
+                    size_hint_x: .3
+                    Label:
+                        text: ''
                 Slider:
                     id: srad
                     min: 0
@@ -235,40 +328,64 @@ Builder.load_string("""
                     step: 1
                     value: 12
             GridLayout:
-                cols: 4
+                rows: 2
                 spacing: 2
-                Label:
-                    text: 'Fill=%s' % fill.active
-                Switch:
-                    id: fill
-                TextInput:
-                    id: hst1
-                    text: '127.0.0.1'
-                    multiline: False
-                TextInput:
-                    id: prt1
-                    text: '4080'
-                    multiline: False
-            GridLayout:
-                cols: 2
-                Spinner:
-                    id: sp1
-                    text: 'Sphere'
-                    values: 'Sphere', 'Up Pyramid', 'Down Pyramid', 'Cuboid', \
-                    'Cylinder X', 'Cylinder Y', 'Cylinder Z', 'Circle X', 'Circle Y', \
-                    'Circle Z', 'Cone Y'
-                Spinner:
-                    id: sp2
-                    text: 'Empty'
-                    values: block_list
-            BoxLayout:
-                orientation: 'vertical'
-                Button:
-                    id: cmd
-                    text: 'Build It!'
-                    on_press: root.cmd(tix1.text, tix2.text, tiy1.text, \
-                    tiy2.text, tiz1.text, tiz2.text, tirad.text, sp1.text, \
-                    sp2.text, fill.active, hst1.text, prt1.text)
+                size_hint_y: .2
+                GridLayout:
+                    cols: 4
+                    GridLayout:
+                        cols: 2
+                        size_hint_x: .21
+                        Label:
+                            text: 'Host'
+                            size_hint_x: .1
+                        TextInput:
+                            id: hst1
+                            size_hint_x: .15
+                            text: '127.0.0.1'
+                            multiline: False
+                            on_text_validate: root.goto_next(prt1)
+                    GridLayout:
+                        cols: 2
+                        size_hint_x: .22
+                        Label:
+                            text: 'Port'
+                            size_hint_x: .14
+                        TextInput:
+                            id: prt1
+                            size_hint_x: .1
+                            text: '4080'
+                            multiline: False
+                            on_text_validate: root.goto_next(tix1)
+                    Label:
+                        id: flabel
+                        text: root.ftxt(self, fill)
+                        size_hint_x: .16
+                    CheckBox:
+                        id: fill
+                        on_active: root.ftxt(flabel, self)
+                        size_hint_x: .16
+                GridLayout:
+                    cols: 3
+                    spacing: 2
+                    size_hint_y: .8
+                    Button:
+                        id: cmd
+                        text: 'Build It!'
+                        on_press: root.cmd(tix1.text, tix2.text, tiy1.text, \
+                        tiy2.text, tiz1.text, tiz2.text, tirad.text, sp1.text, \
+                        sp2.text, fill.active, hst1.text, prt1.text)
+                    Spinner:
+                        id: sp1
+                        text: 'Sphere'
+                        values: 'Sphere', 'Up Pyramid', 'Down Pyramid', 'Cuboid', \
+                        'Cylinder X', 'Cylinder Y', 'Cylinder Z', 'Circle X', 'Circle Y', \
+                        'Circle Z', 'Cone Y'
+                    Spinner:
+                        id: sp2
+                        text: 'Empty'
+                        values: block_list
+                        
     TabbedPanelItem:
         text: sp3.text
         BoxLayout:
@@ -500,7 +617,7 @@ Builder.load_string("""
                     text: 'Up Pyramid'
                     values: 'Sphere', 'Up Pyramid', 'Down Pyramid', 'Cuboid', \
                     'Cylinder X', 'Cylinder Y', 'Cylinder Z', 'Circle X', 'Circle Y', \
-                    'Circle Z', 'Cone Y'
+                    'Circle Z', 'Cone Y', 'iBuilder X', 'iBuilder Z'
                 Spinner:
                     id: sp4
                     text: 'Empty'
@@ -1984,20 +2101,48 @@ def int2(x):
     y = int(float(x))
     return y
 
+def cntr_slider(slider):
+        mid = ((slider.max - slider.min) / 2) + slider.min
+        return mid
+
 class Test(TabbedPanel):
 
+    def ftxt(self, label, switch):
+        if switch.active == False:
+            label.text = 'Hollow'
+        elif switch.active == True:
+            label.text = 'Filled'
+        return label.text
+
+    def goto_next(self, ti):
+        ti.focus = True
+        ti.select_all()
+
+    def min(self, txt_inp, slider):
+        value = int2(txt_inp.text)
+        slider.min = value
+        slider.value = cntr_slider(slider)
+
+    def max(self, txt_inp, slider):
+        value = int2(txt_inp.text)
+        slider.max = value
+        slider.value = cntr_slider(slider)
+        
     def int_set(obj, ti, slider):
         y = int2(ti.text)
         slider.value = y
-        return slider.value
     
-    def pls(y, x):
-        x.value += 1
-        return x.value
+    def pls(self, slider):
+        if slider.value < slider.max:
+            slider.value += 1
+        elif slider.value == slider.max:
+            slider.value += 0
 
-    def mns(y, x):
-        x.value -= 1
-        return x.value
+    def mns(self, slider):
+        if slider.value > slider.min:
+            slider.value -= 1
+        elif slider.value == slider.min:
+            slider.value -= 0
         
     def cmd(widget_id, tix1, tix2, tiy1, tiy2, tiz1, \
             tiz2, tirad, sp1, sp2, fill, hst1, prt1):
@@ -2006,7 +2151,7 @@ class Test(TabbedPanel):
 
         if sp1 == 'Up Pyramid':
             client.set_blocks(pyramid(int2(tix1), int2(tix2), \
-                                      int2(tiy1), int2(tiz1), int2(tiz2), fill), blk_id)
+                                      int2(tiy1), int2(tiy2), int2(tiz1), int2(tiz2), fill), blk_id)
         if sp1 == 'Down Pyramid':
             client.set_blocks(upyramid(int2(tix1), int2(tix2), \
                                        int2(tiy1), int2(tiz1), int2(tiz2), fill), blk_id)
@@ -2035,8 +2180,14 @@ class Test(TabbedPanel):
             client.set_blocks(cylinder_z(int2(tix1), int2(tiy1), int2(tiz1), \
                                          int2(tiz2), int2(tirad), fill), blk_id)
         if sp1 == 'Cone Y':
-            client.set_blocks(cone_y(int2(tix1), int2(tiy1), int2(tiy2), \
+            client.set_blocks(cone_y(int2(tix1), int2(tiy1), \
                                      int2(tiz1), int2(tirad), fill), blk_id)
+        if sp1 == 'iBuilder X':
+            client.set_blocks(ibuilder_x(int2(tix1), int2(tix2), int2(tirad), int2(tiy1), \
+                                     int2(tiy2), int2(tiz1), int2(tiz2), fill), blk_id)
+        if sp1 == 'iBuilder Z':
+            client.set_blocks(ibuilder_z(int2(tix1), int2(tix2), int2(tiy1), \
+                                     int2(tiy2), int2(tiz1), int2(tiz2), int2(tirad), fill), blk_id)
         time.sleep(5)
 
 class ProBuilderApp(App):

@@ -5,6 +5,7 @@ import requests
 import socket
 import sqlite3
 import sys
+import time
 
 DEFAULT_HOST = '127.0.0.1'
 DEFAULT_PORT = 4080
@@ -102,11 +103,11 @@ def cylinder_z(x, y, z1, z2, r, fill=False):
         result |= circle_z(x, y, z, r, fill)
     return result
 
-def cone_y(x, y1, y2, z, r, fill=False):
-    y1, y2 = sorted((y1, y2))
+def cone_y(x, y, z, r, fill=False):
     result = set()
-    for y in range(y1, y2):
+    for y in range(y, y+r):
         result |= circle_y(x, y, z, r, fill)
+        y += 1
         r -= 1
     return result
 
@@ -128,13 +129,28 @@ def cuboid(x1, x2, y1, y2, z1, z2, fill=True):
                 result.add((x, y, z))
     return result
 
-def pyramid(x1, x2, y, z1, z2, fill=False):
+def pyramid(x1, x2, y1, y2, z1, z2, fill=False):
     x1, x2 = sorted((x1, x2))
+    y1, y2 = sorted((y1, y2))
     z1, z2 = sorted((z1, z2))
     result = set()
-    while x2 >= x1 and z2 >= z2:
-        result |= cuboid(x1, x2, y, y, z1, z2, fill)
-        y, x1, x2, z1, z2 = y + 1, x1 + 1, x2 - 1, z1 + 1, z2 - 1
+    xrng = len(range(x1, x2))
+    yrng = len(range(y1, y2))
+    zrng = len(range(z1, z2))
+    if xrng >= zrng:
+        lrgr = xrng
+    elif xrng < zrng:
+        lrgr = zrng
+    if yrng >= lrgr:
+        if yrng / (lrgr / 2) > 1:
+            yi = yrng / (lrgr / 2)
+            while x2 >= x1 and z2 >= z2:
+                result |= cuboid(x1, x2, y1, y1+yi, z1, z2, fill)
+                y1, x1, x2, z1, z2 = y1 + yi, x1 + 1, x2 - 1, z1 + 1, z2 - 1
+        elif yrng / (lrgr / 2) <= 1:
+            while x2 >= x1 and z2 >= z2:
+                result |= cuboid(x1, x2, y1, y1, z1, z2, fill)
+                y1, x1, x2, z1, z2 = y1 + 1, x1 + 1, x2 - 1, z1 + 1, z2 - 1
     return result
 
 def upyramid(x1, x2, y, z1, z2, fill=False):
@@ -152,7 +168,7 @@ def ibuilder_x(x1, x2, xi, y1, yi, z1, z2, fill=False):
     result = set()
     for x in range(x1, x2):
         result |= cuboid(x1, x1 + xi, y1, y1, z1, z2, fill)
-        x1 += xi - 1
+        x1 += xi
         y1 += yi
     return result
 
@@ -160,9 +176,9 @@ def ibuilder_z(x1, x2, y1, yi, z1, z2, zi, fill=False):
     x1, x2 = sorted((x1, x2))
     z1, z2 = sorted((z1, z2))
     result = set()
-    for x in range(x1, x2):
-        result |= cuboid(x1, x1, y1, y1, z1, z2 + zi, fill)
-        z1 += zi - 1
+    for z in range(z1, z2):
+        result |= cuboid(x1, x2, y1, y1, z1, z1 + zi, fill)
+        z1 += zi
         y1 += yi
     return result
 
@@ -208,7 +224,13 @@ def main():
     client = Client(HOST, PORT, USERNAME, IDENTITY_TOKEN)
     set_block = client.set_block
     set_blocks = client.set_blocks
-
+##    i = 1
+##    while i < 105:
+##        set_blocks(cuboid(-89, -60, i, i, 30, -30, fill=True), LIGHT_STONE)
+##        i += 4
+##    time.sleep(10)
+##    set_blocks(pyramid(-182, -172, 12, 22, 148, 138, fill=False), EMPTY)
+##    time.sleep(3)
 
 if __name__ == '__main__':
     main()

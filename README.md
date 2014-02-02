@@ -3,8 +3,8 @@ ProBuilder
 
 Builder GUI plug-in for Craft
 
-   This project is a plug-in program for the PC game 'Craft'. For more information about the
-   game itself, please refer to:
+    This project is a plug-in program for the PC game 'Craft'. For more information about the
+    game itself, please refer to:
    [Craft](http://www.michaelfogleman.com/craft/)
 
 Code Details:
@@ -52,8 +52,8 @@ Instructions:
 
 	4) Set all text inputs to equal your target coordinates.
 
-	5) Objects are set to 'Hollow' by default, to change this, simply check the box next to the 'Port'
-	    input so the label reads 'Filled'.
+	5) Objects are set to 'Hollow' by default, to change this, simply check the box above the
+	    'Build It!' button so the label reads 'Filled'.
 
 	6) Triple-quadruple check your settings, hit the 'Build It!' button, sit back and watch it build.
 

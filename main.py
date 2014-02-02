@@ -337,34 +337,34 @@ Builder.load_string("""
                         cols: 2
                         size_hint_x: .21
                         Label:
+                            id: flabel
+                            text: root.ftxt(self, fill)
+                            size_hint_x: .16
+                        CheckBox:
+                            id: fill
+                            on_active: root.ftxt(flabel, self)
+                            size_hint_x: .16
+                    GridLayout:
+                        cols: 4
+                        size_hint_x: .5
+                        Label:
                             text: 'Host'
-                            size_hint_x: .1
+                            size_hint_x: .21
                         TextInput:
                             id: hst1
-                            size_hint_x: .15
+                            size_hint_x: .29
                             text: '127.0.0.1'
                             multiline: False
                             on_text_validate: root.goto_next(prt1)
-                    GridLayout:
-                        cols: 2
-                        size_hint_x: .22
                         Label:
                             text: 'Port'
-                            size_hint_x: .14
+                            size_hint_x: .2
                         TextInput:
                             id: prt1
-                            size_hint_x: .1
+                            size_hint_x: .25
                             text: '4080'
                             multiline: False
                             on_text_validate: root.goto_next(tix1)
-                    Label:
-                        id: flabel
-                        text: root.ftxt(self, fill)
-                        size_hint_x: .16
-                    CheckBox:
-                        id: fill
-                        on_active: root.ftxt(flabel, self)
-                        size_hint_x: .16
                 GridLayout:
                     cols: 3
                     spacing: 2

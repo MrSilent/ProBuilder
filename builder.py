@@ -34,6 +34,38 @@ PURPLE_FLOWER = 20
 SUN_FLOWER = 21
 WHITE_FLOWER = 22
 BLUE_FLOWER = 23
+STEEL = 63
+STEEL_BLUE = 62
+WHITE = 61
+LAVENDER = 60
+TURQOISE = 59
+INDIGO = 58
+ROYAL_BLUE = 57
+DENIM = 56
+SHIRONERI = 55
+TAN = 54
+RUST = 53
+TAUPE = 52
+BROWN = 51
+MAROON = 50
+MIDNIGHT_BLUE = 49
+BLACK = 48
+KHAKI = 47
+OLIVE = 46
+HOT_PINK = 45
+PINK = 44
+RED = 43
+PURPLE = 42
+DARK_GREY = 41
+LIGHT_GREY = 40
+NAVY = 39
+CHARCOL = 38
+REA = 37
+PINE = 36
+CYAN = 35
+DROID_GREEN = 34
+LIGHT_GREEN = 33
+YELLOW = 32
 
 OFFSETS = [
     (-0.5, -0.5, -0.5),
@@ -129,7 +161,7 @@ def cuboid(x1, x2, y1, y2, z1, z2, fill=True):
                 result.add((x, y, z))
     return result
 
-def pyramid(x1, x2, y1, y2, z1, z2, fill=False):
+def pyramid2(x1, x2, y1, y2, z1, z2, fill=False):
     x1, x2 = sorted((x1, x2))
     y1, y2 = sorted((y1, y2))
     z1, z2 = sorted((z1, z2))
@@ -151,6 +183,15 @@ def pyramid(x1, x2, y1, y2, z1, z2, fill=False):
             while x2 >= x1 and z2 >= z2:
                 result |= cuboid(x1, x2, y1, y1, z1, z2, fill)
                 y1, x1, x2, z1, z2 = y1 + 1, x1 + 1, x2 - 1, z1 + 1, z2 - 1
+    return result
+
+def pyramid(x1, x2, y, z1, z2, fill=False):
+    x1, x2 = sorted((x1, x2))
+    z1, z2 = sorted((z1, z2))
+    result = set()
+    while x2 >= x1 and z2 >= z2:
+        result |= cuboid(x1, x2, y, y, z1, z2, fill)
+        y, x1, x2, z1, z2 = y + 1, x1 + 1, x2 - 1, z1 + 1, z2 - 1
     return result
 
 def upyramid(x1, x2, y, z1, z2, fill=False):

@@ -10,8 +10,8 @@ from kivy.uix.tabbedpanel import TabbedPanel
 from kivy.uix.floatlayout import FloatLayout
 from kivy.lang import Builder
 
-USERNAME = 'xmrsilentx'
-IDENTITY_TOKEN = 'c3d63b61bb424d7fa62de0cb9523ec6f'
+USERNAME = ''
+IDENTITY_TOKEN = ''
 
 block_list = ['Empty', 'Grass', 'Sand', 'Stone', 'Brick', 'Wood', 'Cement',
               'Dirt', 'Plank', 'Snow', 'Glass', 'Cobble', 'Light Stone',
@@ -3155,39 +3155,25 @@ class Test(TabbedPanel):
             if sp1 == 'Sphere':
                 client.set_blocks(sphere(x1, y1, z1, rad, fill), blk_id)
             if sp1 == 'Circle X':
-                client.set_blocks(circle_x(int2(tix1), int2(tiy1), \
-                                           int2(tiz1), int2(tirad), fill), blk_id)
+                client.set_blocks(circle_x(x1, y1, z1, rad, fill), blk_id)
             if sp1 == 'Circle Y':
-                client.set_blocks(circle_y(int2(tix1), int2(tiy1), \
-                                           int2(tiz1), int2(tirad), fill), blk_id)
+                client.set_blocks(circle_y(x1, y1, z1, rad, fill), blk_id)
             if sp1 == 'Circle Z':
-                client.set_blocks(circle_z(int2(tix1), int2(tiy1), \
-                                           int2(tiz1), int2(tirad), fill), blk_id)
+                client.set_blocks(circle_z(x1, y1, z1, rad, fill), blk_id)
             if sp1 == 'Cuboid':
-                client.set_blocks(cuboid(int2(tix1), int2(tix2), int2(tiy1), \
-                                         int2(tiy2), int2(tiz1), int2(tiz2), fill), blk_id)
+                client.set_blocks(cuboid(x1, x2, y1, y2, z1, z2, fill), blk_id)
             if sp1 == 'Cylinder X':
-                client.set_blocks(cylinder_x(int2(tix1), int2(tix2), int2(tiy1), \
-                                             int2(tiz1), int2(tirad), fill), blk_id)
+                client.set_blocks(cylinder_x(x1, x2, y1, z1, rad, fill), blk_id)
             if sp1 == 'Cylinder Y':
-                client.set_blocks(cylinder_y(int2(tix1), int2(tiy1), int2(tiy2), \
-                                             int2(tiz1), int2(tirad), fill), blk_id)
+                client.set_blocks(cylinder_y(x1, y1, y2, z1, rad, fill), blk_id)
             if sp1 == 'Cylinder Z':
-                client.set_blocks(cylinder_z(int2(tix1), int2(tiy1), int2(tiz1), \
-                                             int2(tiz2), int2(tirad), fill), blk_id)
+                client.set_blocks(cylinder_z(x1, y1, z1, z2, rad, fill), blk_id)
             if sp1 == 'Cone Y':
-                client.set_blocks(cone_y(int2(tix1), int2(tiy1), \
-                                         int2(tiz1), int2(tirad), fill), blk_id)
-            if sp1 == 'iBuilder X':
-                client.set_blocks(ibuilder_x(int2(tix1), int2(tix2), int2(tirad), int2(tiy1), \
-                                         int2(tiy2), int2(tiz1), int2(tiz2), fill), blk_id)
-            if sp1 == 'iBuilder Z':
-                client.set_blocks(ibuilder_z(int2(tix1), int2(tix2), int2(tiy1), \
-                                         int2(tiy2), int2(tiz1), int2(tiz2), int2(tirad), fill), blk_id)
+                client.set_blocks(cone_y(x1, y1, z1, rad, fill), blk_id)
             cnt -= 1
             x1, x2, y1, y2, z1, z2, rad = x1 + xi, x2 + xxi, y1 + yi, y2 + yyi, \
                                         z1 + zi, z2 + zzi, rad + radi
-        time.sleep(10)
+        time.sleep(3)
             
     def cmd(self, tix1, tix2, tiy1, tiy2, tiz1, \
             tiz2, tirad, sp1, sp2, fill, hst1, prt1):

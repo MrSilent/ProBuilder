@@ -3131,7 +3131,7 @@ class Test(TabbedPanel):
     def ibuild(self, tix1, inc_x1, tix2, inc_x2, tiy1, inc_y1, \
                tiy2, inc_y2, tiz1, inc_z1, tiz2, inc_z2, tirad, inc_rad, count, sp1, sp2, fill, hst1, prt1):
         blk_id = blkid(sp2)
-        client = Client(hst1, int(prt1))
+        client = Client(hst1, int(prt1), USERNAME, IDENTITY_TOKEN)
         x1 = int2(tix1)
         x2 = int2(tix2)
         y1 = int2(tiy1)
@@ -3178,7 +3178,7 @@ class Test(TabbedPanel):
     def cmd(self, tix1, tix2, tiy1, tiy2, tiz1, \
             tiz2, tirad, sp1, sp2, fill, hst1, prt1):
         blk_id = blkid(sp2)
-        client = Client(hst1, int(prt1))
+        client = Client(hst1, int(prt1), USERNAME, IDENTITY_TOKEN)
         if sp1 == 'Up Pyramid':
             client.set_blocks(pyramid(int2(tix1), int2(tix2), \
                                       int2(tiy1), int2(tiz1), int2(tiz2), fill), blk_id)

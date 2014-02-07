@@ -1,5 +1,7 @@
 import kivy
 kivy.require('1.7.2')
+import sys
+import datetime
 import time
 import random
 
@@ -10,9 +12,6 @@ from kivy.uix.tabbedpanel import TabbedPanel
 from kivy.uix.floatlayout import FloatLayout
 from kivy.lang import Builder
 
-USERNAME = ''
-IDENTITY_TOKEN = ''
-
 block_list = ['Empty', 'Grass', 'Sand', 'Stone', 'Brick', 'Wood', 'Cement',
               'Dirt', 'Plank', 'Snow', 'Glass', 'Cobble', 'Light Stone',
               'Dark Stone', 'Chest', 'Leaves', 'Cloud', 'Tall Grass', 'Yellow Flower',
@@ -22,7 +21,7 @@ block_list = ['Empty', 'Grass', 'Sand', 'Stone', 'Brick', 'Wood', 'Cement',
               'Charcol', 'Navy', 'Light Grey', 'Dark Grey', 'Purple', 'Red',
               'Pink', 'Hot Pink', 'Olive', 'Khaki', 'Black', 'Mdnt Blue', 'Maroon',
               'Brown', 'Taupe', 'Rust', 'Tan', 'Shironeri', 'Denim', 'Royal B',
-              'Indigo', 'Turquoise', 'Lavender', 'White', 'Steel Blue', 'Steel']    
+              'Indigo', 'Turquoise', 'Lavender', 'White', 'Steel Blue', 'Steel']
 
 Builder.load_string("""
 
@@ -203,7 +202,7 @@ Builder.load_string("""
                         on_press: root.pls(sy2)
                 GridLayout:
                     cols: 2
-                    size_hint_x: .3 
+                    size_hint_x: .3
                     Label:
                         text: ' Column  '
                     Label:
@@ -399,7 +398,7 @@ Builder.load_string("""
                     Spinner:
                         id: sp2
                         text: 'Empty'
-                        values: block_list                        
+                        values: block_list
     TabbedPanelItem:
         text: sp3.text
         BoxLayout:
@@ -563,7 +562,7 @@ Builder.load_string("""
                         on_press: root.pls(sy4)
                 GridLayout:
                     cols: 2
-                    size_hint_x: .3 
+                    size_hint_x: .3
                     Label:
                         text: ' Column  '
                     Label:
@@ -923,7 +922,7 @@ Builder.load_string("""
                         on_press: root.pls(sy6)
                 GridLayout:
                     cols: 2
-                    size_hint_x: .3 
+                    size_hint_x: .3
                     Label:
                         text: ' Column  '
                     Label:
@@ -1283,7 +1282,7 @@ Builder.load_string("""
                         on_press: root.pls(sy8)
                 GridLayout:
                     cols: 2
-                    size_hint_x: .3 
+                    size_hint_x: .3
                     Label:
                         text: ' Column  '
                     Label:
@@ -1643,7 +1642,7 @@ Builder.load_string("""
                         on_press: root.pls(sy0)
                 GridLayout:
                     cols: 2
-                    size_hint_x: .3 
+                    size_hint_x: .3
                     Label:
                         text: ' Column  '
                     Label:
@@ -2003,7 +2002,7 @@ Builder.load_string("""
                         on_press: root.pls(sy12)
                 GridLayout:
                     cols: 2
-                    size_hint_x: .3 
+                    size_hint_x: .3
                     Label:
                         text: ' Column  '
                     Label:
@@ -2528,7 +2527,7 @@ Builder.load_string("""
                         multiline: False
                         text: str(srad8.value)
                         on_text: root.int_set(self, srad8)
-                        on_text_validate: root.goto_next(hst8)
+                        on_text_validate: root.goto_next(count)
                     GridLayout:
                         cols: 2
                         size_hint_x: .1
@@ -2548,7 +2547,7 @@ Builder.load_string("""
                         text: str(0)
                         multiline: False
                         size_hint_x: .2
-                        on_text_validate: root.goto_next(count)
+                        on_text_validate: root.goto_next(swx1)
                     GridLayout:
                         cols: 2
                         size_hint_x: .1
@@ -2567,29 +2566,105 @@ Builder.load_string("""
                     step: 1
                     value: 12
             GridLayout:
-                cols: 7
-                spacing: 2
+                cols: 2
+                spacing: 4
                 size_hint_y: .15
-                Label:
-                    text: 'Count'
-                    size_hint_x: .12
-                TextInput:
-                    id: count
-                    text: str(0)
-                    multiline: False
-                    size_hint_x: .2
-                    on_text_validate: root.goto_next(tix15)
                 GridLayout:
-                    cols: 2
-                    size_hint_x: .1
-                    Button:
-                        text: '<'
-                        size_hint_x: .1
-                        on_press: root.mns_c(int(count.text), count)
-                    Button:
-                        text:'>'
-                        size_hint_x: .1
-                        on_press: root.pls_2(int(count.text), count)
+                    cols: 3
+                    size_hint_x: .25
+                    Label:
+                        text: 'Count'
+                        size_hint_x: .4
+                    TextInput:
+                        id: count
+                        text: str(0)
+                        multiline: False
+                        size_hint_x: .4
+                        on_text_validate: root.goto_next(inc_x1)
+                    GridLayout:
+                        cols: 2
+                        size_hint_x: .2
+                        Button:
+                            text: '<'
+                            on_press: root.mns_c(int(count.text), count)
+                        Button:
+                            text:'>'
+                            on_press: root.pls_2(int(count.text), count)
+                GridLayout:
+                    cols: 9
+                    spacing: 4
+                    size_hint_y: .15
+                    size_hint_x: .75
+                    GridLayout:
+                        rows: 2
+                        size_hint_x: .096
+                        Label:
+                            text: 'X-Z Switch'
+                        Label:
+                            text: 'Interval'
+                    TextInput:
+                        id: swx1
+                        text: str(0)
+                        multiline: False
+                        size_hint_x: .099
+                        on_text_validate: root.goto_next(swy1)
+                    GridLayout:
+                        cols: 2
+                        size_hint_x: .0489
+                        Button:
+                            text: '<'
+                            on_press: root.mns_c(int(swx1.text), swx1)
+                        Button:
+                            text:'>'
+                            on_press: root.pls_2(int(swx1.text), swx1)
+                    GridLayout:
+                        rows: 2
+                        size_hint_x: .098
+                        Label:
+                            text: 'Y Switch'
+                        Label:
+                            text: 'Interval'
+                    TextInput:
+                        id: swy1
+                        text: str(0)
+                        multiline: False
+                        size_hint_x: .096
+                        on_text_validate: root.goto_next(swr1)
+                    GridLayout:
+                        cols: 2
+                        size_hint_x: .05
+                        Button:
+                            text: '<'
+                            on_press: root.mns_c(int(swy1.text), swy1)
+                        Button:
+                            text:'>'
+                            on_press: root.pls_2(int(swy1.text), swy1)
+                    GridLayout:
+                        rows: 2
+                        size_hint_x: .098
+                        Label:
+                            text: 'Rad Switch'
+                        Label:
+                            text: 'Interval'
+                    TextInput:
+                        id: swr1
+                        text: str(0)
+                        multiline: False
+                        size_hint_x: .096
+                        on_text_validate: root.goto_next(hst8)
+                    GridLayout:
+                        cols: 2
+                        size_hint_x: .05
+                        Button:
+                            text: '<'
+                            on_press: root.mns_c(int(swr1.text), swr1)
+                        Button:
+                            text:'>'
+                            on_press: root.pls_2(int(swr1.text), swr1)
+            GridLayout:
+                cols: 4
+                spacing: 2
+                size_hint_y: .12
                 Label:
                     text: 'Fill=%s' % fill8.active
                     size_hint_x: .2
@@ -2607,7 +2682,7 @@ Builder.load_string("""
                     text: '4080'
                     multiline: False
                     size_hint_x: .2
-                    on_text_validate: root.goto_next(inc_x1)
+                    on_text_validate: root.goto_next(tix15) 
             GridLayout:
                 cols: 3
                 size_hint_y: .1
@@ -2626,8 +2701,8 @@ Builder.load_string("""
                     text: 'Build It!'
                     on_press: root.ibuild(tix15.text, inc_x1.text, tix16.text, inc_x2.text, \
                     tiy15.text, inc_y1.text, tiy16.text, inc_y2.text, tiz15.text, inc_z1.text, \
-                    tiz16.text, inc_z2.text, tirad8.text, inc_rad.text, count.text, sp15.text, \
-                    sp16.text, fill8.active, hst8.text, prt8.text)
+                    tiz16.text, inc_z2.text, tirad8.text, inc_rad.text, count.text, swx1.text, \
+                    swy1.text, swr1.text, sp15.text, sp16.text, fill8.active, hst8.text, prt8.text)
     TabbedPanelItem:
         text: 'iBuilder 2'
         BoxLayout:
@@ -2956,7 +3031,7 @@ Builder.load_string("""
                         multiline: False
                         text: str(srad9.value)
                         on_text: root.int_set(self, srad9)
-                        on_text_validate: root.goto_next(hst9)
+                        on_text_validate: root.goto_next(count2)
                     GridLayout:
                         cols: 2
                         size_hint_x: .1
@@ -2976,7 +3051,7 @@ Builder.load_string("""
                         text: str(0)
                         multiline: False
                         size_hint_x: .2
-                        on_text_validate: root.goto_next(count2)
+                        on_text_validate: root.goto_next(swx)
                     GridLayout:
                         cols: 2
                         size_hint_x: .1
@@ -2995,29 +3070,105 @@ Builder.load_string("""
                     step: 1
                     value: 12
             GridLayout:
-                cols: 7
-                spacing: 2
+                cols: 2
+                spacing: 4
                 size_hint_y: .15
-                Label:
-                    text: 'Count'
-                    size_hint_x: .12
-                TextInput:
-                    id: count2
-                    text: str(0)
-                    multiline: False
-                    size_hint_x: .2
-                    on_text_validate: root.goto_next(tix17)
                 GridLayout:
-                    cols: 2
-                    size_hint_x: .1
-                    Button:
-                        text: '<'
-                        size_hint_x: .1
-                        on_press: root.mns_c(int(count2.text), count2)
-                    Button:
-                        text:'>'
-                        size_hint_x: .1
-                        on_press: root.pls_2(int(count2.text), count2)
+                    cols: 3
+                    size_hint_x: .25
+                    Label:
+                        text: 'Count'
+                        size_hint_x: .4
+                    TextInput:
+                        id: count2
+                        text: str(0)
+                        multiline: False
+                        size_hint_x: .4
+                        on_text_validate: root.goto_next(inc_x3)
+                    GridLayout:
+                        cols: 2
+                        size_hint_x: .2
+                        Button:
+                            text: '<'
+                            on_press: root.mns_c(int(count2.text), count2)
+                        Button:
+                            text:'>'
+                            on_press: root.pls_2(int(count2.text), count2)
+                GridLayout:
+                    cols: 9
+                    spacing: 4
+                    size_hint_y: .15
+                    size_hint_x: .75
+                    GridLayout:
+                        rows: 2
+                        size_hint_x: .096
+                        Label:
+                            text: 'X-Z Switch'
+                        Label:
+                            text: 'Interval'
+                    TextInput:
+                        id: swx
+                        text: str(0)
+                        multiline: False
+                        size_hint_x: .099
+                        on_text_validate: root.goto_next(swy)
+                    GridLayout:
+                        cols: 2
+                        size_hint_x: .0489
+                        Button:
+                            text: '<'
+                            on_press: root.mns_c(int(swx.text), swx)
+                        Button:
+                            text:'>'
+                            on_press: root.pls_2(int(swx.text), swx)
+                    GridLayout:
+                        rows: 2
+                        size_hint_x: .098
+                        Label:
+                            text: 'Y Switch'
+                        Label:
+                            text: 'Interval'
+                    TextInput:
+                        id: swy
+                        text: str(0)
+                        multiline: False
+                        size_hint_x: .096
+                        on_text_validate: root.goto_next(swr)
+                    GridLayout:
+                        cols: 2
+                        size_hint_x: .05
+                        Button:
+                            text: '<'
+                            on_press: root.mns_c(int(swy.text), swy)
+                        Button:
+                            text:'>'
+                            on_press: root.pls_2(int(swy.text), swy)
+                    GridLayout:
+                        rows: 2
+                        size_hint_x: .098
+                        Label:
+                            text: 'Rad Switch'
+                        Label:
+                            text: 'Interval'
+                    TextInput:
+                        id: swr
+                        text: str(0)
+                        multiline: False
+                        size_hint_x: .096
+                        on_text_validate: root.goto_next(hst9)
+                    GridLayout:
+                        cols: 2
+                        size_hint_x: .05
+                        Button:
+                            text: '<'
+                            on_press: root.mns_c(int(swr.text), swr)
+                        Button:
+                            text:'>'
+                            on_press: root.pls_2(int(swr.text), swr)
+            GridLayout:
+                cols: 4
+                spacing: 2
+                size_hint_y: .12
                 Label:
                     text: 'Fill=%s' % fill9.active
                     size_hint_x: .2
@@ -3035,7 +3186,7 @@ Builder.load_string("""
                     text: '4080'
                     multiline: False
                     size_hint_x: .2
-                    on_text_validate: root.goto_next(inc_x3)
+                    on_text_validate: root.goto_next(tix17)
             GridLayout:
                 cols: 3
                 size_hint_y: .1
@@ -3054,8 +3205,9 @@ Builder.load_string("""
                     text: 'Build It!'
                     on_press: root.ibuild(tix17.text, inc_x3.text, tix18.text, inc_x4.text, \
                     tiy17.text, inc_y3.text, tiy18.text, inc_y4.text, tiz17.text, inc_z3.text, \
-                    tiz18.text, inc_z4.text, tirad9.text, inc_rad2.text, count.text, sp17.text, \
-                    sp18.text, fill9.active, hst9.text, prt9.text)
+                    tiz18.text, inc_z4.text, tirad9.text, inc_rad2.text, count2.text, swx.text, \
+                    swy.text, swr.text, sp17.text, sp18.text, fill9.active, \
+                    hst9.text, prt9.text)
 
 """)
 
@@ -3096,11 +3248,11 @@ class Test(TabbedPanel):
         value = int2(txt_inp.text)
         slider.max = value
         slider.value = cntr_slider(slider)
-        
+
     def int_set(obj, ti, slider):
         y = int2(ti.text)
         slider.value = y
-    
+
     def pls(self, slider):
         if slider.value < slider.max:
             slider.value += 1
@@ -3129,9 +3281,10 @@ class Test(TabbedPanel):
         txt_inp.text = str(value)
 
     def ibuild(self, tix1, inc_x1, tix2, inc_x2, tiy1, inc_y1, \
-               tiy2, inc_y2, tiz1, inc_z1, tiz2, inc_z2, tirad, inc_rad, count, sp1, sp2, fill, hst1, prt1):
+               tiy2, inc_y2, tiz1, inc_z1, tiz2, inc_z2, tirad, \
+               inc_rad, count, swx, swy, swr, sp1, sp2, fill, hst1, prt1):
         blk_id = blkid(sp2)
-        client = Client(hst1, int(prt1), USERNAME, IDENTITY_TOKEN)
+        client = Client(hst1, int(prt1))
         x1 = int2(tix1)
         x2 = int2(tix2)
         y1 = int2(tiy1)
@@ -3147,7 +3300,34 @@ class Test(TabbedPanel):
         zi = int2(inc_z1)
         zzi = int2(inc_z2)
         radi = int2(inc_rad)
+        swtx = int2(swx)
+        swty = int2(swy)
+        swtr = int2(swr)
+        rev = swtx*2
+        now = datetime.datetime.utcnow()
+        history_list = '<Start>', str(now), str(sp1), str(sp2), 'Fill________'+str(fill), 'X1__________'+str(x1), \
+              'X1 Inc______'+str(xi), 'X2__________'+str(x2), 'X2 Inc______'+str(xxi), \
+              'Y1__________'+str(y1), 'Y1 Inc______'+str(yi), 'Y2__________'+str(y2), \
+              'Y2 Inc______'+str(yyi), 'Z1__________'+str(z1), 'Z1 Inc______'+str(zi), \
+              'Z2__________'+str(z2), 'Z2 Inc______'+str(zzi), 'Radius______'+str(rad), \
+              'Radius Inc__'+str(radi), 'Count_______'+str(count), 'X-Z Switch__'+str(swtx), \
+              'Y-Switch'+str(swty), 'Rad Switch__'+str(swtr), hst1, prt1, '<End>', '============================'
+        logger = open("log.txt", "a")
+        for items in history_list:
+            logger.write(items+'\n')
+        logger.close()
         while cnt > 0:
+            if swtx != 0:
+                if cnt % swtx == 0:
+                    xi, xxi, zi, zzi = zi, zzi, xi, xxi
+                if cnt % rev == 0:
+                    xi, xxi, zi, zzi = xi - xi*2, xxi - xxi*2, zi - zi*2, zzi - zzi*2
+            if swty != 0:
+                if cnt % swty == 0:
+                    yi, yyi = yi - yi*2, yyi - yyi*2
+            if swtr != 0:
+                if cnt % swtr == 0:
+                    radi = radi - radi*2
             if sp1 == 'Up Pyramid':
                 client.set_blocks(pyramid(x1, x2, y1, z1, z2, fill), blk_id)
             if sp1 == 'Down Pyramid':
@@ -3174,11 +3354,10 @@ class Test(TabbedPanel):
             x1, x2, y1, y2, z1, z2, rad = x1 + xi, x2 + xxi, y1 + yi, y2 + yyi, \
                                         z1 + zi, z2 + zzi, rad + radi
         time.sleep(3)
-            
     def cmd(self, tix1, tix2, tiy1, tiy2, tiz1, \
             tiz2, tirad, sp1, sp2, fill, hst1, prt1):
         blk_id = blkid(sp2)
-        client = Client(hst1, int(prt1), USERNAME, IDENTITY_TOKEN)
+        client = Client(hst1, int(prt1))
         if sp1 == 'Up Pyramid':
             client.set_blocks(pyramid(int2(tix1), int2(tix2), \
                                       int2(tiy1), int2(tiz1), int2(tiz2), fill), blk_id)
@@ -3212,13 +3391,7 @@ class Test(TabbedPanel):
         if sp1 == 'Cone Y':
             client.set_blocks(cone_y(int2(tix1), int2(tiy1), \
                                      int2(tiz1), int2(tirad), fill), blk_id)
-        if sp1 == 'iBuilder X':
-            client.set_blocks(ibuilder_x(int2(tix1), int2(tix2), int2(tirad), int2(tiy1), \
-                                     int2(tiy2), int2(tiz1), int2(tiz2), fill), blk_id)
-        if sp1 == 'iBuilder Z':
-            client.set_blocks(ibuilder_z(int2(tix1), int2(tix2), int2(tiy1), \
-                                     int2(tiy2), int2(tiz1), int2(tiz2), int2(tirad), fill), blk_id)
-        time.sleep(5)
+        time.sleep(3)
 
 class ProBuilderApp(App):
     def build(self):

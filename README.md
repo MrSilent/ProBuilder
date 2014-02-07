@@ -3,9 +3,9 @@ ProBuilder
 
 Builder GUI plug-in for Craft
 
-    This project is a plug-in program for the PC game 'Craft'. For more information about the
-    game itself, please refer to:
-   [Craft](http://www.michaelfogleman.com/craft/)
+    This project is a plug-in program for the PC game 'Craft'. For more
+    information about the game itself, please refer to:
+    [Craft](http://www.michaelfogleman.com/craft/)
 
 Code Details:
     
@@ -22,29 +22,30 @@ Requirements:
 
 Features:
     
-	-Thirteen build functions with more in development.
-	-Eight individual tabs for multi-execution.
-	-Tab titles correspond to build function for ease of location.
-	-Input coordinates directly into text widgets
-	    or use the buttons/slider/scrollwheel for coarse/fine tuning.
-	-Adjustable ranges.(A more sand-boxed approach to building)
-	-Change target server/port on the go.
-	-Check box to specify whether object should be filled or hollow.
-	-Spinner buttons for simple function/block selection
+	-Thirteen build functions with more in development. -Eight individual
+	tabs for multi-execution. -Tab titles correspond to build
+	function for ease of location. -Input coordinates directly
+	into text widgets or use the buttons/slider/scrollwheel for
+	coarse/fine tuning. -Adjustable ranges.(A more sand-boxed
+	approach to building) -Change target server/port on the go.
+	-Check box to specify whether object should be filled or
+	hollow. -Spinner buttons for simple function/block selection
 	-Works on Android using Qpython.(Current version may be too
-            difficult to use, simpler Droid version is in the works)
-	-Runs on most all major operating systems and their distros.
+	difficult to use, simpler Droid version is in the works) -Runs
+	on most all major operating systems and their distros.
 
 Instructions:
     
-    To launch the window make sure you have Kivy 1.7.2 installed.
-    Unix: Open a terminal and cd to the source directory. Type 'kivy main.py'. Done
-    Windows: Right click the main.py file and choose 'open with' option. Browse to where
-      you unpacked the kivy folder and select the kivy.bat file. Done
-	1) First study the builder and main scripts carefully to get an understanding of what
-            each input corresponds to.(Many functions do not require every available input, i.e.
-            'Sphere' only needs Centers, 'X', 'Y', 'Z', and 'Radius'.) Starting and center inputs
-            are marked 'Ctr/ X, Y, and Z'. End point inputs are marked 'End/ X, Y, and Z'.
+    To launch the window make sure you have Kivy 1.7.2 installed. Unix:
+    Open a terminal and cd to the source directory. Type 'kivy
+    main.py'. Done Windows: Right click the main.py file and choose
+    'open with' option. Browse to where you unpacked the kivy folder
+    and select the kivy.bat file. Done 1) First study the builder and
+    main scripts carefully to get an understanding of what each input
+    corresponds to.(Many functions do not require every available
+    input, i.e. 'Sphere' only needs Centers, 'X', 'Y', 'Z', and
+    'Radius'.) Starting and center inputs are marked 'Ctr/ X, Y, and
+    Z'. End point inputs are marked 'End/ X, Y, and Z'.
 
 	2) Study the map and select a good spot with enough space to handle the size of your object.
 

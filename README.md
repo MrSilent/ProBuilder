@@ -13,7 +13,7 @@ Builder GUI plug-in for Craft
 Code Details:
     
     This program is mainly written in Kivy/kv language although
-Python/Pygame do most of the work.
+	Python/Pygame do most of the work.
     
 ![](https://raw.github.com/MrSilent/ProBuilder/master/screenshot_2.png)
 

@@ -53,11 +53,11 @@ Windows:
     Done
 Then:
         1) First study the builder and main scripts carefully to get an
-        understanding of what each input corresponds to.(Many
-        functions do not require every available input, i.e. 'Sphere'
-        only needs Centers, 'X', 'Y', 'Z', and 'Radius'.) Starting and
-        center inputs are marked 'Ctr/ X, Y, and Z'. End point inputs
-        are marked 'End/ X, Y, and Z'.
+	        understanding of what each input corresponds to.(Many
+	        functions do not require every available input, i.e. 'Sphere'
+	        only needs Centers, 'X', 'Y', 'Z', and 'Radius'.) Starting and
+	        center inputs are marked 'Ctr/ X, Y, and Z'. End point inputs
+	        are marked 'End/ X, Y, and Z'.
 
 	2) Study the map and select a good spot with enough space to handle the size of your object.
 

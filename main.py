@@ -35,6 +35,7 @@ Builder.load_string("""
               'Hot Pink', 'Olive', 'Khaki', 'Black', 'Mdnt Blue', 'Maroon', \
               'Brown', 'Taupe', 'Rust', 'Tan', 'Shironeri', 'Denim', 'Royal B', \
               'Indigo', 'Turquoise', 'Lavender', 'White', 'Steel Blue', 'Steel']
+#:set dummy_val 0
 
 <Test>:
     do_default_tab: False
@@ -2702,7 +2703,7 @@ Builder.load_string("""
                     on_press: root.ibuild(tix15.text, inc_x1.text, tix16.text, inc_x2.text, \
                     tiy15.text, inc_y1.text, tiy16.text, inc_y2.text, tiz15.text, inc_z1.text, \
                     tiz16.text, inc_z2.text, tirad8.text, inc_rad.text, count.text, swx1.text, \
-                    swy1.text, swr1.text, sp15.text, sp16.text, fill8.active, hst8.text, prt8.text)
+                    swy1.text, swr1.text, dummy_val, sp15.text, sp16.text, fill8.active, hst8.text, prt8.text)
     TabbedPanelItem:
         text: 'iBuilder 2'
         BoxLayout:
@@ -3155,7 +3156,7 @@ Builder.load_string("""
                         text: str(0)
                         multiline: False
                         size_hint_x: .096
-                        on_text_validate: root.goto_next(hst9)
+                        on_text_validate: root.goto_next(inx1)
                     GridLayout:
                         cols: 2
                         size_hint_x: .05
@@ -3166,15 +3167,37 @@ Builder.load_string("""
                             text:'>'
                             on_press: root.pls_2(int(swr.text), swr)
             GridLayout:
-                cols: 4
+                cols: 7
                 spacing: 2
-                size_hint_y: .12
+                size_hint_y: .15
+                GridLayout:
+                    rows: 2
+                    size_hint_x: .079
+                    Label:
+                        text: 'X-Z +/-'
+                    Label:
+                        text: 'Interval'
+                TextInput:
+                    id: inx1
+                    text: str(0)
+                    multiline: False
+                    size_hint_x: .08
+                    on_text_validate: root.goto_next(hst9)
+                GridLayout:
+                    cols: 2
+                    size_hint_x: .039
+                    Button:
+                        text: '<'
+                        on_press: root.mns_c(int(inx1.text), inx1)
+                    Button:
+                        text:'>'
+                        on_press: root.pls_2(int(inx1.text), inx1)
                 Label:
                     text: 'Fill=%s' % fill9.active
-                    size_hint_x: .2
+                    size_hint_x: .1
                 Switch:
                     id: fill9
-                    size_hint_x: .2
+                    size_hint_x: .1
                 TextInput:
                     id: hst9
                     text: '127.0.0.1'
@@ -3206,7 +3229,7 @@ Builder.load_string("""
                     on_press: root.ibuild(tix17.text, inc_x3.text, tix18.text, inc_x4.text, \
                     tiy17.text, inc_y3.text, tiy18.text, inc_y4.text, tiz17.text, inc_z3.text, \
                     tiz18.text, inc_z4.text, tirad9.text, inc_rad2.text, count2.text, swx.text, \
-                    swy.text, swr.text, sp17.text, sp18.text, fill9.active, \
+                    swy.text, swr.text, inx1.text, sp17.text, sp18.text, fill9.active, \
                     hst9.text, prt9.text)
 
 """)
@@ -3282,7 +3305,7 @@ class Test(TabbedPanel):
 
     def ibuild(self, tix1, inc_x1, tix2, inc_x2, tiy1, inc_y1, \
                tiy2, inc_y2, tiz1, inc_z1, tiz2, inc_z2, tirad, \
-               inc_rad, count, swx, swy, swr, sp1, sp2, fill, hst1, prt1):
+               inc_rad, count, swx, swy, swr, inx1, sp1, sp2, fill, hst1, prt1):
         blk_id = blkid(sp2)
         client = Client(hst1, int(prt1))
         x1 = int2(tix1)
@@ -3303,7 +3326,7 @@ class Test(TabbedPanel):
         swtx = int2(swx)
         swty = int2(swy)
         swtr = int2(swr)
-        rev = swtx*2
+        invx = int2(inx1)
         now = datetime.datetime.utcnow()
         history_list = '<Start>', str(now), str(sp1), str(sp2), 'Fill________'+str(fill), 'X1__________'+str(x1), \
               'X1 Inc______'+str(xi), 'X2__________'+str(x2), 'X2 Inc______'+str(xxi), \
@@ -3311,17 +3334,18 @@ class Test(TabbedPanel):
               'Y2 Inc______'+str(yyi), 'Z1__________'+str(z1), 'Z1 Inc______'+str(zi), \
               'Z2__________'+str(z2), 'Z2 Inc______'+str(zzi), 'Radius______'+str(rad), \
               'Radius Inc__'+str(radi), 'Count_______'+str(count), 'X-Z Switch__'+str(swtx), \
-              'Y-Switch'+str(swty), 'Rad Switch__'+str(swtr), hst1, prt1, '<End>', '============================'
+              'Y-Switch____'+str(swty), 'Rad Switch__'+str(swtr), hst1, prt1, '<End>', '============================'
         logger = open("log.txt", "a")
         for items in history_list:
             logger.write(items+'\n')
         logger.close()
         while cnt > 0:
+            if invx != 0:
+                if cnt % invx == 0:
+                    xi, xxi, zi, zzi = xi - (xi+xi), xxi - (xxi+xxi), zi - (zi+zi), zzi - (zzi+zzi)
             if swtx != 0:
                 if cnt % swtx == 0:
                     xi, xxi, zi, zzi = zi, zzi, xi, xxi
-                if cnt % rev == 0:
-                    xi, xxi, zi, zzi = xi - xi*2, xxi - xxi*2, zi - zi*2, zzi - zzi*2
             if swty != 0:
                 if cnt % swty == 0:
                     yi, yyi = yi - yi*2, yyi - yyi*2

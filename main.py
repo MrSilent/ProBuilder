@@ -12,29 +12,8 @@ from kivy.uix.tabbedpanel import TabbedPanel
 from kivy.uix.floatlayout import FloatLayout
 from kivy.lang import Builder
 
-block_list = ['Empty', 'Grass', 'Sand', 'Stone', 'Brick', 'Wood', 'Cement',
-              'Dirt', 'Plank', 'Snow', 'Glass', 'Cobble', 'Light Stone',
-              'Dark Stone', 'Chest', 'Leaves', 'Cloud', 'Tall Grass', 'Yellow Flower',
-              'Red Flower', 'Purple Flower', 'Sun Flower', 'White Flower',
-              'Blue Flower', '?', '?', '?', '?', '?', '?', '?', '?', 'Yellow',
-              'Light Green', 'Droid Green', 'Cyan', 'Pine', 'D-Rea',
-              'Charcol', 'Navy', 'Light Grey', 'Dark Grey', 'Purple', 'Red',
-              'Pink', 'Hot Pink', 'Olive', 'Khaki', 'Black', 'Mdnt Blue', 'Maroon',
-              'Brown', 'Taupe', 'Rust', 'Tan', 'Shironeri', 'Denim', 'Royal B',
-              'Indigo', 'Turquoise', 'Lavender', 'White', 'Steel Blue', 'Steel']
-
 Builder.load_string("""
 
-#:set block_list ['Empty', 'Grass', 'Sand', 'Stone', 'Brick', 'Wood', \
-                'Cement', 'Dirt', 'Plank', 'Snow', 'Glass', 'Cobble', 'Light Stone', \
-                'Dark Stone', 'Chest', 'Leaves', 'Cloud', 'Tall Grass', 'Yellow Flower', \
-                'Red Flower', 'Purple Flower', 'Sun Flower', 'White Flower', \
-                'Blue Flower', '?', '?', '?', '?', '?', '?', '?', '?', 'Yellow', \
-              'Light Green', 'Droid Green', 'Cyan', 'Pine', 'D-Rea', 'Charcol', \
-              'Navy', 'Light Grey', 'Dark Grey', 'Purple', 'Red', 'Pink', \
-              'Hot Pink', 'Olive', 'Khaki', 'Black', 'Mdnt Blue', 'Maroon', \
-              'Brown', 'Taupe', 'Rust', 'Tan', 'Shironeri', 'Denim', 'Royal B', \
-              'Indigo', 'Turquoise', 'Lavender', 'White', 'Steel Blue', 'Steel']
 #:set dummy_val 0
 
 <Test>:
@@ -399,7 +378,7 @@ Builder.load_string("""
                     Spinner:
                         id: sp2
                         text: 'Empty'
-                        values: block_list
+                        values: root.block_list
     TabbedPanelItem:
         text: sp3.text
         BoxLayout:
@@ -759,7 +738,7 @@ Builder.load_string("""
                     Spinner:
                         id: sp4
                         text: 'Empty'
-                        values: block_list
+                        values: root.block_list
     TabbedPanelItem:
         text: sp5.text
         BoxLayout:
@@ -1119,7 +1098,7 @@ Builder.load_string("""
                     Spinner:
                         id: sp6
                         text: 'Empty'
-                        values: block_list
+                        values: root.block_list
     TabbedPanelItem:
         text: sp7.text
         BoxLayout:
@@ -1479,7 +1458,7 @@ Builder.load_string("""
                     Spinner:
                         id: sp8
                         text: 'Empty'
-                        values: block_list
+                        values: root.block_list
     TabbedPanelItem:
         text: sp9.text
         BoxLayout:
@@ -1839,7 +1818,7 @@ Builder.load_string("""
                     Spinner:
                         id: sp0
                         text: 'Empty'
-                        values: block_list
+                        values: root.block_list
     TabbedPanelItem:
         text: sp11.text
         BoxLayout:
@@ -2199,7 +2178,7 @@ Builder.load_string("""
                     Spinner:
                         id: sp12
                         text: 'Empty'
-                        values: block_list
+                        values: root.block_list
     TabbedPanelItem:
         text: 'iBuilder 1'
         BoxLayout:
@@ -2696,7 +2675,7 @@ Builder.load_string("""
                 Spinner:
                     id: sp16
                     text: 'Empty'
-                    values: block_list
+                    values: root.block_list
                 Button:
                     id: cmd8
                     text: 'Build It!'
@@ -3222,7 +3201,7 @@ Builder.load_string("""
                 Spinner:
                     id: sp18
                     text: 'Empty'
-                    values: block_list
+                    values: root.block_list
                 Button:
                     id: cmd9
                     text: 'Build It!'
@@ -3250,6 +3229,17 @@ def blkid(sp2):
         return blk_id
 
 class Test(TabbedPanel):
+
+    block_list = ['Empty', 'Grass', 'Sand', 'Stone', 'Brick', 'Wood', 'Cement',
+              'Dirt', 'Plank', 'Snow', 'Glass', 'Cobble', 'Light Stone',
+              'Dark Stone', 'Chest', 'Leaves', 'Cloud', 'Tall Grass', 'Yellow Flower',
+              'Red Flower', 'Purple Flower', 'Sun Flower', 'White Flower',
+              'Blue Flower', '?', '?', '?', '?', '?', '?', '?', '?', 'Yellow',
+              'Light Green', 'Droid Green', 'Cyan', 'Pine', 'D-Rea',
+              'Charcol', 'Navy', 'Light Grey', 'Dark Grey', 'Purple', 'Red',
+              'Pink', 'Hot Pink', 'Olive', 'Khaki', 'Black', 'Mdnt Blue', 'Maroon',
+              'Brown', 'Taupe', 'Rust', 'Tan', 'Shironeri', 'Denim', 'Royal B',
+              'Indigo', 'Turquoise', 'Lavender', 'White', 'Steel Blue', 'Steel']
 
     def fill_txt(self, label, switch):
         if switch.active == False:
@@ -3328,13 +3318,15 @@ class Test(TabbedPanel):
         swtr = int2(swr)
         invx = int2(inx1)
         now = datetime.datetime.utcnow()
-        history_list = '<Start>', str(now), str(sp1), str(sp2), 'Fill________'+str(fill), 'X1__________'+str(x1), \
-              'X1 Inc______'+str(xi), 'X2__________'+str(x2), 'X2 Inc______'+str(xxi), \
-              'Y1__________'+str(y1), 'Y1 Inc______'+str(yi), 'Y2__________'+str(y2), \
-              'Y2 Inc______'+str(yyi), 'Z1__________'+str(z1), 'Z1 Inc______'+str(zi), \
-              'Z2__________'+str(z2), 'Z2 Inc______'+str(zzi), 'Radius______'+str(rad), \
-              'Radius Inc__'+str(radi), 'Count_______'+str(count), 'X-Z Switch__'+str(swtx), \
-              'Y-Switch____'+str(swty), 'Rad Switch__'+str(swtr), hst1, prt1, '<End>', '============================'
+        history_list = '<Start>', str(now), 'Obj_________'+str(sp1), 'Blk-Type____'+str(sp2), \
+                       'Fill________'+str(fill), 'X1__________'+str(x1), 'X1 Inc______'+str(xi), \
+                       'X2__________'+str(x2), 'X2 Inc______'+str(xxi), 'Y1__________'+str(y1), \
+                       'Y1 Inc______'+str(yi), 'Y2__________'+str(y2), 'Y2 Inc______'+str(yyi), \
+                       'Z1__________'+str(z1), 'Z1 Inc______'+str(zi), 'Z2__________'+str(z2), \
+                       'Z2 Inc______'+str(zzi), 'Radius______'+str(rad), 'Radius Inc__'+str(radi), \
+                       'Count_______'+str(count), 'X-Z Switch__'+str(swtx), 'Y-Switch____'+str(swty), \
+                       'Rad Switch__'+str(swtr), 'Host________'+hst1, 'Port________'+prt1, '<End>', \
+                       '============================'
         logger = open("log.txt", "a")
         for items in history_list:
             logger.write(items+'\n')

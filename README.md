@@ -29,21 +29,18 @@ Python crunches the numbers.
 Features
 ========
 
--Bitmap tab for easy bitmapping your ASCII art.
--iBuilder is an increment/interval builder used for building multiple
-objects in iterations i.e. spiraled stairs.
--Eleven build functions via builder.py script.
--Eight individual tabs for multi-execution.
--Tab titles correspond to build function for ease of location.
--Input coordinates directly into text widgets or use the
-buttons/slider/scrollwheel for coarse/fine tuning.
--Adjustable ranges.(A more sand-boxed approach to building)
--Change target server/port on the go.
--Check box to specify whether object should be filled or hollow.
--Spinner buttons for simple function/block selection
--Works on Android using Qpython.(Current version may be too difficult
-to use, simpler Droid version is in the works)
--Runs on most all major operating systems and their distros.
+* -Bitmap tab for easy bitmapping your ASCII art.
+* -iBuilder is an increment/interval builder used for building multiple objects in iterations i.e. spiraled stairs.
+* -Eleven build functions via builder.py script.
+* -Eight individual tabs for multi-execution.
+* -Tab titles correspond to build function for ease of location.
+* -Input coordinates directly into text widgets or use the buttons/slider/scrollwheel for coarse/fine tuning.
+* -Adjustable ranges.(A more sand-boxed approach to building)
+* -Change target server/port on the go.
+* -Check box to specify whether object should be filled or hollow.
+* -Spinner buttons for simple function/block selection
+* -Works on Android using Qpython.(Current version may be too difficult to use, simpler Droid version is in the works)
+* -Runs on most all major operating systems and their distros.
 
 Instructions
 ============

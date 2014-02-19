@@ -1106,114 +1106,126 @@ Builder.load_string("""
             padding: 5
             spacing: 5
             GridLayout:
-                rows: 13
+                rows: 2
                 spacing: 4
-                size_hint_y: .7
+                size_hint_y: .55
                 Label:
                     text: 'Design'
                     size_hint_y: .05
                 TextInput:
                     id: map1
-                    multiline: False
-                    size_hint_y: .1
-                    on_text_validate: root.goto_next(map2)
-                TextInput:
-                    id: map2
-                    multiline: False
-                    size_hint_y: .1
-                    on_text_validate: root.goto_next(map3)
-                TextInput:
-                    id: map3
-                    multiline: False
-                    size_hint_y: .1
-                    on_text_validate: root.goto_next(map4)
-                TextInput:
-                    id: map4
-                    multiline: False
-                    size_hint_y: .1
-                    on_text_validate: root.goto_next(map5)
-                TextInput:
-                    id: map5
-                    multiline: False
-                    size_hint_y: .1
-                    on_text_validate: root.goto_next(map6)
-                TextInput:
-                    id: map6
-                    multiline: False
-                    size_hint_y: .1
-                    on_text_validate: root.goto_next(map7)
-                TextInput:
-                    id: map7
-                    multiline: False
-                    size_hint_y: .1
-                    on_text_validate: root.goto_next(map8)
-                TextInput:
-                    id: map8
-                    multiline: False
-                    size_hint_y: .1
-                    on_text_validate: root.goto_next(map9)
-                TextInput:
-                    id: map9
-                    multiline: False
-                    size_hint_y: .1
-                    on_text_validate: root.goto_next(map10)
-                TextInput:
-                    id: map10
-                    multiline: False
-                    size_hint_y: .1
-                    on_text_validate: root.goto_next(map11)
-                TextInput:
-                    id: map11
-                    multiline: False
-                    size_hint_y: .1
-                    on_text_validate: root.goto_next(map12)
-                TextInput:
-                    id: map12
-                    multiline: False
-                    size_hint_y: .1
+                    multiline: True
                     on_text_validate: root.goto_next(char1)
             GridLayout:
-                size_hint_y: .1
+                size_hint_y: .2
                 cols: 6
                 spacing: 4
-                Label:
-                    text: 'Char1 Block'
                 TextInput:
                     id: char1
                     multiline: False
+                    hint_text: 'Character 1 Block'
                     on_text_validate: root.goto_next(char2)
                 Spinner:
                     id: char1spn
                     values: root.block_list
                     text: 'Empty'
-                Label:
-                    text: 'Char2 Block'
                 TextInput:
                     id: char2
                     multiline: False
+                    hint_text: 'Character 2 Block'
                     on_text_validate: root.goto_next(char3)
                 Spinner:
                     id: char2spn
                     values: root.block_list
                     text: 'Empty'
-                Label:
-                    text: 'Char3 Block'
                 TextInput:
                     id: char3
                     multiline: False
+                    hint_text: 'Character 3 Block'
                     on_text_validate: root.goto_next(char4)
                 Spinner:
                     id: char3spn
                     values: root.block_list
                     text: 'Empty'
-                Label:
-                    text: 'Char4 Block'
                 TextInput:
                     id: char4
                     multiline: False
-                    on_text_validate: root.goto_next(dirx1)
+                    hint_text: 'Character 4 Block'
+                    on_text_validate: root.goto_next(char5)
                 Spinner:
                     id: char4spn
+                    values: root.block_list
+                    text: 'Empty'
+                TextInput:
+                    id: char5
+                    multiline: False
+                    hint_text: 'Character 5 Block'
+                    on_text_validate: root.goto_next(char6)
+                Spinner:
+                    id: char5spn
+                    values: root.block_list
+                    text: 'Empty'
+                TextInput:
+                    id: char6
+                    multiline: False
+                    hint_text: 'Character 6 Block'
+                    on_text_validate: root.goto_next(char7)
+                Spinner:
+                    id: char6spn
+                    values: root.block_list
+                    text: 'Empty'
+                TextInput:
+                    id: char7
+                    multiline: False
+                    hint_text: 'Character 7 Block'
+                    on_text_validate: root.goto_next(char8)
+                Spinner:
+                    id: char7spn
+                    values: root.block_list
+                    text: 'Empty'
+                TextInput:
+                    id: char8
+                    multiline: False
+                    hint_text: 'Character 8 Block'
+                    on_text_validate: root.goto_next(char9)
+                Spinner:
+                    id: char8spn
+                    values: root.block_list
+                    text: 'Empty'
+                TextInput:
+                    id: char9
+                    multiline: False
+                    hint_text: 'Character 9 Block'
+                    on_text_validate: root.goto_next(char10)
+                Spinner:
+                    id: char9spn
+                    values: root.block_list
+                    text: 'Empty'
+                TextInput:
+                    id: char10
+                    multiline: False
+                    hint_text: 'Character 10 Block'
+                    on_text_validate: root.goto_next(char11)
+                Spinner:
+                    id: char10spn
+                    values: root.block_list
+                    text: 'Empty'
+                TextInput:
+                    id: char11
+                    multiline: False
+                    hint_text: 'Character 11 Block'
+                    on_text_validate: root.goto_next(char12)
+                Spinner:
+                    id: char11spn
+                    values: root.block_list
+                    text: 'Empty'
+                TextInput:
+                    id: char12
+                    multiline: False
+                    hint_text: 'Character 12 Block'
+                    on_text_validate: root.goto_next(dirx1)
+                Spinner:
+                    id: char12spn
                     values: root.block_list
                     text: 'Empty'
             GridLayout:
@@ -1302,13 +1314,14 @@ Builder.load_string("""
                 Button:
                     id: bcmd
                     text: 'Print'
-                    on_press: root.prnt(map1.text, map2.text, map3.text, map4.text, \
-                    map5.text, map6.text, map7.text, map8.text, map9.text, map10.text, \
-                    map11.text, map12.text, char1.text, char2.text, \
-                    char3.text, char4.text, cx.text, cy.text, cz.text, dirx1.text, \
-                    diry1.text, dirz1.text, dirx2.text, diry2.text, dirz2.text, \
-                    char1spn.text, char2spn.text, char3spn.text, char4spn.text, \
-                    hstb.text, prtb.text)
+                    on_press: root.prnt(map1, char1.text, char2.text, \
+                    char3.text, char4.text, char5.text, char6.text, char7.text, \
+                    char8.text, char9.text, char10.text, char11.text, char12.text, cx.text, \
+                    cy.text, cz.text, dirx1.text, diry1.text, dirz1.text, \
+                    dirx2.text, diry2.text, dirz2.text, char1spn.text, \
+                    char2spn.text, char3spn.text, char4spn.text, char5spn.text, \
+                    char6spn.text, char7spn.text, char8spn.text, char9spn.text, \
+                    char10spn.text, char11spn.text, char12spn.text, hstb.text, prtb.text)
     TabbedPanelItem:
         text: 'iBuilder 1'
         BoxLayout:
@@ -2378,33 +2391,38 @@ class Test(TabbedPanel):
             label.text = 'Filled'
         return label.text
 
-    def prnt(self, mp1, mp2, mp3, mp4, mp5, mp6, mp7, mp8, mp9, mp10, \
-             mp11, mp12, chr1, chr2, chr3, chr4, sx, sy, sz, dx, dy, dz, \
-             dxx, dyy, dzz, cb1, cb2, cb3, cb4, hstb, prtb):
+    def prnt(self, bitmap, char1, char2, char3, char4, char5, char6, char7, \
+             char8, char9, char10, char11, char12, sx, sy, sz, dx, dy, dz, \
+             dxx, dyy, dzz, cblk1, cblk2, cblk3, cblk4, cblk5, cblk6, cblk7, \
+             cblk8, cblk9, cblk10, cblk11, cblk12, hstb, prtb):
         client = Client(hstb, int2(prtb))
-        b1 = blkid(cb1)
-        b2 = blkid(cb2)
-        b3 = blkid(cb3)
-        b4 = blkid(cb4)
-        data = [
-            mp1,
-            mp2,
-            mp3,
-            mp4,
-            mp5,
-            mp6,
-            mp7,
-            mp8,
-            mp9,
-            mp10,
-            mp11,
-            mp12,
-        ]
+        blk1 = blkid(cblk1)
+        blk2 = blkid(cblk2)
+        blk3 = blkid(cblk3)
+        blk4 = blkid(cblk4)
+        blk5 = blkid(cblk5)
+        blk6 = blkid(cblk6)
+        blk7 = blkid(cblk7)
+        blk8 = blkid(cblk8)
+        blk9 = blkid(cblk9)
+        blk10 = blkid(cblk10)
+        blk11 = blkid(cblk11)
+        blk12 = blkid(cblk12)
+        txt = bitmap.text.splitlines(True)
+        data = txt
         lookup = {
-            chr1: b1,
-            chr2: b2,
-            chr3: b3,
-            chr4: b4,
+            char1: blk1,
+            char2: blk2,
+            char3: blk3,
+            char4: blk4,
+            char5: blk5,
+            char6: blk6,
+            char7: blk7,
+            char8: blk8,
+            char9: blk9,
+            char10: blk10,
+            char11: blk11,
+            char12: blk12,
             }
         client.bitmap(int2(sx), int2(sy), int2(sz), (int2(dx), \
                         int2(dy), int2(dz)), (int2(dxx), int2(dyy), \
@@ -2461,13 +2479,9 @@ class Test(TabbedPanel):
                inc_rad, count, swx, swy, swr, inx1, sp1, sp2, fill, hst1, prt1):
         blk_id = blkid(sp2)
         client = Client(hst1, int(prt1))
-        x1 = int2(tix1)
-        x2 = int2(tix2)
-        y1 = int2(tiy1)
-        y2 = int2(tiy2)
-        z1 = int2(tiz1)
-        z2 = int2(tiz2)
-        rad = int2(tirad)
+        x1, x2, y1, y2, z1, z2, rad = int2(tix1), int2(tix2), \
+                                      int2(tiy1), int2(tiy2), \
+                                      int2(tiz1), int2(tiz2), int2(tirad)
         cnt = int2(count)
         xi = int2(inc_x1)
         xxi = int2(inc_x2)

@@ -1,3 +1,4 @@
 *.pyc
 auth.db
 test.py
+log.txt

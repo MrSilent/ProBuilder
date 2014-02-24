@@ -2549,8 +2549,8 @@ class ProTab(TabbedPanel):
         switch_rad = int2(swr)
         invert_x_z = int2(inv_xz)
         now = datetime.datetime.utcnow()
-        history_list = '<|_Start_|>', str(now), 'Obj_________'+str(sp1), \
-                       'Blk-Type____'+str(sp2), 'Fill________'+str(fill), \
+        history_list = '<|_Start_|>', str(now), 'Obj_________'+str(fnc_spnr), \
+                       'Blk-Type____'+str(blk_spnr), 'Fill________'+str(fill), \
                        'X1__________'+str(x1), 'X1 Inc______'+str(xi), \
                        'X2__________'+str(x2), 'X2 Inc______'+str(xxi), \
                        'Y1__________'+str(y1), 'Y1 Inc______'+str(yi), \
